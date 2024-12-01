@@ -29,6 +29,11 @@ manifest:
       url-base: https://github.com/urob
 
   projects:
+    - name: nice-view-gem
+      url: https://github.com/M165437/nice-view-gem
+      revision: main
+      path: modules/nice-view-gem
+
     - name: zmk-auto-layer
       path: modules/auto-layer
     - name: zmk-helpers
