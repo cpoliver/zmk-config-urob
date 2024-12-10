@@ -1,24 +1,27 @@
 / {
-        keymap {
+
+  keymap {
 
     compatible = "zmk,keymap";
                 default_layer {
                       bindings = <
-//    ┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬──────┐   ┌──────┬─────────────┬─────────────┬─────────────┬─────────────┬──────┐
-//    │     tab     │      Q      │      W      │      E      │      R      │  T   │   │  Y   │      U      │      I      │      O      │      P      │  \   │
-//    ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │ mt lctl esc │ &hml lsft A │ &hml lctl S │ &hml lalt D │ &hml lgui F │  G   │   │  H   │ &hmr rgui J │ &hmr ralt K │ &hmr rctl L │ &hmr rsft ; │  '   │
-//    ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │    lsft     │      Z      │      X      │      C      │      V      │  B   │   │  N   │      M      │      ,      │      .      │      /      │ rsft │
-//    └─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┴─────────────┴──────┘
-//                                              │ lt NUM tab  │ lt NAV spc  │ mute │   │ play │ lt NAV bspc │ lt NUM ent  │
-//                                              └─────────────┴─────────────┴──────┘   └──────┴─────────────┴─────────────┘
+//    ┌───────────┬─────────────┬─────────────┬─────────────┬─────────────┬──────┐   ┌──────┬─────────────┬─────────────┬─────────────┬─────────────┬──────┐
+//    │    tab    │      Q      │      W      │      E      │      R      │  T   │   │  Y   │      U      │      I      │      O      │      P      │  \   │
+//    ├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │ mt lctl Q │ &hml lsft A │ &hml lctl S │ &hml lalt D │ &hml lgui F │  G   │   │  H   │ &hmr lgui J │ &hmr lalt K │ &hmr lctl L │ &hmr lsft ; │  '   │
+//    ├───────────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │ lctl(spc) │      Z      │      X      │      C      │      V      │  B   │   │  N   │      M      │      ,      │      .      │      /      │ rsft │
+//    └───────────┴─────────────┴─────────────┼─────────────┼─────────────┼──────┤   ├──────┼─────────────┼─────────────┼─────────────┴─────────────┴──────┘
+//                                            │ lt NUM tab  │ lt NAV spc  │ mute │   │ play │ lt NUM bspc │ lt NAV ent  │
+//                                            └─────────────┴─────────────┴──────┘   └──────┴─────────────┴─────────────┘
   &kp TAB         &kp Q          &kp W          &kp E         &kp R           &kp T            &kp Y      &kp U          &kp I         &kp O          &kp P             &kp BSLH
-  &mt LCTRL ESC   &hml LSHFT A   &hml LCTRL S   &hml LALT D   &hml LGUI F     &kp G            &kp H      &hmr RGUI J    &hmr RALT K   &hmr RCTRL L   &hmr RSHFT SEMI   &kp SQT
-  &kp LSHFT       &kp Z          &kp X          &kp C         &kp V           &kp B            &kp N      &kp M          &kp COMMA     &kp DOT        &kp FSLH          &kp RSHFT
-                                                &lt NUM TAB   &lt NAV SPACE   &kp C_MUTE       &kp C_PP   &lt NAV BSPC   &lt NUM RET
+  &mt LCTRL Q     &hml LSHFT A   &hml LCTRL S   &hml LALT D   &hml LGUI F     &kp G            &kp H      &hmr LGUI J    &hmr LALT K   &hmr LCTRL L   &hmr LSHFT SEMI   &kp SQT
+  &kp LC(SPACE)   &kp Z          &kp X          &kp C         &kp V           &kp B            &kp N      &kp M          &kp COMMA     &kp DOT        &kp FSLH          &kp RSHFT
+                                                &lt NUM TAB   &lt NAV SPACE   &kp C_MUTE       &kp C_PP   &lt NUM BSPC   &lt NAV RETURN
                       >;
-                    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp TAB LS(TAB)>;
+                    sensor-bindings = 
+                      <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                      <&inc_dec_kp TAB LS(TAB)>;
                 };
 
                 nav_layer {
@@ -37,7 +40,9 @@
   ___   &sk LSHFT       &sk LCTRL       &sk LALT       &sk LGUI       ___              &kp SLCK    _NAV_BSPC   _NAV_DEL    ___          ___       ___
                                         ___            ___            ___              ___         _CANCEL     ___
       >;
-                    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LG(Z) LG(LS(Z))>;
+                    sensor-bindings =
+                      <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                      <&inc_dec_kp LG(Z) LG(LS(Z))>;
     };
 
 
@@ -57,7 +62,9 @@
   ___   ___             &kp N1          &kp N2         &kp N3         ___       ___   &kp N1   &kp N2   &kp N3   ___      ___
                                         ___            &kp N0         ___       ___   ___      ___
       >;
-                    sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp RIGHT LEFT>;
+                    sensor-bindings =
+                      <&inc_dec_kp UP DOWN>,
+                      <&inc_dec_kp RIGHT LEFT>;
     };
 
                 fun_layer {
@@ -76,7 +83,9 @@
   ___   &kp F10         &kp F1         &kp F2          &kp F3          ___       _PIN_APP     _PIN_WIN     _DSK_MGR       ___          ___   ___
                                        ___             ___             ___       &kp C_MUTE   &kp C_PP     ___
       >;
-                    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                    sensor-bindings =
+                      <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                      <&inc_dec_kp PG_UP PG_DN>;
     };
 
                 sys_layer {
@@ -95,7 +104,9 @@
   _BTC      ___    ___    ___    ___    &sys_reset        &sys_reset    ___    ___    ___    ___    ___
                           ___    ___    ___               ___           ___    ___
       >;
-                    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                    sensor-bindings =
+                      <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                      <&inc_dec_kp PG_UP PG_DN>;
     };
 
                 mse_layer {
@@ -114,7 +125,9 @@
   ___   ___         _MB3        _MB2       _MB1       ___        ___     _MW_L   ___     _MW_R   ___     ___
                                 _MB2       _MB1       ___        ___     _MB1    _MB2
       >;
-                    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                    sensor-bindings =
+                      <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                      <&inc_dec_kp PG_UP PG_DN>;
     };
   };
 };

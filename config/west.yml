@@ -27,12 +27,17 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: urob
       url-base: https://github.com/urob
+    - name: infely
+      url-base: https://github.com/infely
 
   projects:
-    - name: nice-view-gem
-      url: https://github.com/M165437/nice-view-gem
+    # - name: nice-view-gem
+    #   url: https://github.com/M165437/nice-view-gem
+    #   revision: main
+    #   path: modules/nice-view-gem
+    - name: nice-view-battery
+      remote: infely
       revision: main
-      path: modules/nice-view-gem
 
     - name: zmk-auto-layer
       path: modules/auto-layer

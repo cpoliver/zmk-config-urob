@@ -1,6 +1,8 @@
 /* source key position labels */
 #include "zmk-helpers/key-labels/42.h"
 
+#include "base.keymap"
+
 &left_encoder { steps = <30>; };
 &right_encoder { steps = <30>; };
 
@@ -32,6 +34,6 @@
       sensors = <&left_encoder &right_encoder>;
       triggers-per-rotation = <30>;
   };
+
 };
 
-#include "base.keymap"

@@ -234,8 +234,6 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 /* Keymap */
 
 ZMK_CONDITIONAL_LAYER(sys, NAV NUM, SYS)
-ZMK_CONDITIONAL_LAYER(sys, NAV NAV, FUN)
-ZMK_CONDITIONAL_LAYER(sys, NUM NUM, MSE)
 
 #include "layers.keymap"
 
