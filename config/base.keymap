@@ -8,11 +8,6 @@
 #include "zmk-helpers/unicode-chars/greek.dtsi"
 #include "zmk-helpers/unicode-chars/german.dtsi"
 
-/* TODO: fix - encoder missing in .dtsi */
-
-&left_encoder { steps = <30>; };
-&right_encoder { steps = <30>; };
-
 /* Aliases */
 
 // layer aliases
