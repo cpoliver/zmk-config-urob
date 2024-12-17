@@ -74,9 +74,9 @@
 
 /* Homerow mods */
 
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5 // left hand
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5 // right hand
-#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                  // thumbs on 36+ keys
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
+#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS) \
     ZMK_HOLD_TAP(NAME, \
@@ -142,24 +142,24 @@ ZMK_MOD_MORPH(smart_shft,
 };
 
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
-#define SMART_NUM &smart_num NUM 0
-ZMK_HOLD_TAP(smart_num,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&mo>, <&num_dance>;
-)
-ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
-    bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
-)
+// #define SMART_NUM &smart_num NUM 0
+// ZMK_HOLD_TAP(smart_num,
+//     flavor = "balanced";
+//     tapping-term-ms = <200>;
+//     quick-tap-ms = <QUICK_TAP_MS>;
+//     bindings = <&mo>, <&num_dance>;
+// )
+// ZMK_TAP_DANCE(num_dance,
+//     tapping-term-ms = <200>;
+//     bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
+// )
 
 // smart-mouse, requires PR #1366
-ZMK_TRI_STATE(smart_mouse,
-    bindings = <&tog MSE>, <&none>, <&tog MSE>;
-    ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM1 RM2 RM3 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MSE>;
-)
+// ZMK_TRI_STATE(smart_mouse,
+//     bindings = <&tog MSE>, <&none>, <&tog MSE>;
+//     ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM1 RM2 RM3 RB1 RB2 RB3 RH0 RH1>;
+//     ignored-layers = <MSE>;
+// )
 
 /* Custom behaviors */
 
@@ -191,37 +191,31 @@ SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
 SIMPLE_MORPH(lpar_lt, SFT, &kp LPAR, &kp LT)
 SIMPLE_MORPH(rpar_gt, SFT, &kp RPAR, &kp GT)
 
-// tap: space | shift + tap: dot -> space -> sticky shift | hold: activate layer
-ZMK_HOLD_TAP(lt_spc,
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-    bindings = <&mo>, <&spc_morph>;
-)
-SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
-ZMK_MACRO(dot_spc,
-    wait-ms = <0>;
-    tap-ms = <5>;
-    bindings = <&kp DOT &kp SPACE &sk LSHFT>;
-)
-
-// tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
-ZMK_MOD_MORPH(bs_del,
-    bindings = <&kp BSPC>, <&kp DEL>;
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-    keep-mods = <MOD_RSFT>;
-)
-
-// tap: copy | double-tap: cut
-ZMK_TAP_DANCE(copy_cut,
-    tapping-term-ms = <200>;
-    bindings = <&kp LC(INS)>, <&kp LC(X)>;
-)
-
-/* Keymap */
-
-ZMK_CONDITIONAL_LAYER(sys, NAV NUM, SYS)
-
-#include "layers.keymap"
+// // tap: space | shift + tap: dot -> space -> sticky shift | hold: activate layer
+// ZMK_HOLD_TAP(lt_spc,
+//     flavor = "balanced";
+//     tapping-term-ms = <200>;
+//     quick-tap-ms = <QUICK_TAP_MS>;
+//     bindings = <&mo>, <&spc_morph>;
+// )
+// SIMPLE_MORPH(spc_morph, SFT, &kp SPACE, &dot_spc)
+// ZMK_MACRO(dot_spc,
+//     wait-ms = <0>;
+//     tap-ms = <5>;
+//     bindings = <&kp DOT &kp SPACE &sk LSHFT>;
+// )
+//
+// // tap: backspace | lshft + tap: delete | rshft + tap: shift-delete
+// ZMK_MOD_MORPH(bs_del,
+//     bindings = <&kp BSPC>, <&kp DEL>;
+//     mods = <(MOD_LSFT|MOD_RSFT)>;
+//     keep-mods = <MOD_RSFT>;
+// )
+//
+// // tap: copy | double-tap: cut
+// ZMK_TAP_DANCE(copy_cut,
+//     tapping-term-ms = <200>;
+//     bindings = <&kp LC(INS)>, <&kp LC(X)>;
+// )
 
 /* vim: set ft=c tw=174: */
